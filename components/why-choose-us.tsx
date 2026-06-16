@@ -33,10 +33,15 @@ export default function WhyChooseUs() {
   return (
     <section className="py-24 bg-[#0B3B7A] relative overflow-hidden">
       {/* Premium Glass/Glow Effects */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl mix-blend-screen" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl mix-blend-screen" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+        
+        {/* --- UPGRADED: High-Performance Inline Noise Texture (No External Requests!) --- */}
+        <div 
+          className="absolute inset-0 opacity-20 mix-blend-overlay" 
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -47,10 +52,10 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-white/10 text-blue-200 text-sm font-semibold rounded-full mb-6 backdrop-blur-sm border border-white/10">
+          <span className="inline-block px-4 py-2 bg-white/10 text-blue-200 text-sm font-semibold rounded-full mb-6 backdrop-blur-sm border border-white/10 shadow-sm">
             Why Choose Bold Overseas
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
             Comprehensive Support for Your Success
           </h2>
         </motion.div>
@@ -62,13 +67,13 @@ export default function WhyChooseUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + index * 0.1 }}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors duration-300"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/10"
             >
-              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-              <p className="text-blue-100/70 leading-relaxed">{feature.description}</p>
+              <p className="text-blue-100/70 leading-relaxed font-medium">{feature.description}</p>
             </motion.div>
           ))}
         </div>

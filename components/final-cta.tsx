@@ -85,7 +85,7 @@ export default function FinalCTA() {
     whileTap={{ scale: 0.98 }}
     className="px-8 py-4 bg-white text-[#0B3B7A] font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
   >
-    Book A Call With CEO
+    Connect With Our Experts
   </motion.button>
 </Link>
             <motion.a

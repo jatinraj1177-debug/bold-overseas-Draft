@@ -6,21 +6,12 @@ import { useInView } from "react-intersection-observer"
 import Link from "next/link"
 import Image from "next/image"
 
-interface UniversityData {
-  name: string
-  location: string
-  overview: string
-  programs: string[]
-  reputation: string
-}
-
 interface CountryData {
   name: string
   code: string
   flag: string
   image: string
   overview: string
-  universities: UniversityData[]
   courses: string[]
   scholarships: string[]
   workRights: string
@@ -44,10 +35,6 @@ const countries: CountryData[] = [
       "Flexible curriculum allowing you to easily change majors.",
       "Global hub for Tech, Finance, and Business networking."
     ],
-    universities: [
-      { name: "Harvard University", location: "Cambridge, MA", overview: "Ivy League research university founded in 1636, oldest in the US", programs: ["Business", "Law", "Medicine", "Arts & Sciences"], reputation: "Consistently ranked among the top universities globally" },
-      { name: "MIT", location: "Cambridge, MA", overview: "Leading institution in science, engineering, and technology", programs: ["Engineering", "Computer Science", "Physics", "Economics"], reputation: "World leader in STEM education and research" },
-    ],
     courses: ["Computer Science", "Business Administration", "Engineering", "Medicine", "Data Science"],
     scholarships: ["Fulbright Program", "Hubert Humphrey Fellowship", "University Merit Awards"],
     workRights: "OPT allows 12-36 months of work after graduation. CPT available during studies.",
@@ -68,14 +55,10 @@ const countries: CountryData[] = [
       "Home to prestigious, centuries-old global academic institutions.",
       "Access to subsidized healthcare through the NHS surcharge."
     ],
-    universities: [
-      { name: "University of Oxford", location: "Oxford, England", overview: "Oldest English-speaking university in the world", programs: ["Philosophy", "Economics", "Medicine", "Law"], reputation: "Consistently ranked among top 5 universities worldwide" },
-      { name: "University of Cambridge", location: "Cambridge, England", overview: "World-leading research institution with 800+ years of history", programs: ["Natural Sciences", "Engineering", "Mathematics", "Arts"], reputation: "Produced over 100 Nobel laureates" },
-    ],
     courses: ["Business & Management", "Law", "Medicine", "Engineering", "Arts & Humanities"],
     scholarships: ["Chevening Scholarships", "Commonwealth Scholarships", "GREAT Scholarships"],
     workRights: "Graduate Route visa allows 2-3 years post-study work rights.",
-    intakes: ["September (Main)", "January", "May", "August", "November"], // UPDATED INTAKES
+    intakes: ["September (Main)", "January", "May", "August", "November"],
     careerOpportunities: ["Finance & Banking", "Healthcare NHS", "Tech Industry", "Creative Industries"],
     visaSupport: "Student Visa (Tier 4) application support, CAS letter assistance, financial documentation guidance.",
     coordinates: { x: 46, y: 26.5 },
@@ -91,10 +74,6 @@ const countries: CountryData[] = [
       "Post-Graduation Work Permit (PGWP) granted for up to 3 years.",
       "Highly affordable tuition compared to the USA or UK.",
       "Consistently ranked #1 globally for overall quality of life and safety."
-    ],
-    universities: [
-      { name: "University of Toronto", location: "Toronto, ON", overview: "Canada's largest university and top research institution", programs: ["Engineering", "Medicine", "Business", "Arts & Sciences"], reputation: "Ranked among top 20 universities globally" },
-      { name: "McGill University", location: "Montreal, QC", overview: "Historic English-language university in French-speaking Quebec", programs: ["Medicine", "Law", "Engineering", "Sciences"], reputation: "Canada's most international university" },
     ],
     courses: ["Engineering", "Information Technology", "Healthcare", "Business", "Environmental Sciences"],
     scholarships: ["Vanier Canada Graduate Scholarships", "Ontario Trillium Scholarship", "University Awards"],
@@ -116,10 +95,6 @@ const countries: CountryData[] = [
       "Incredible climate, beaches, and a vibrant outdoor lifestyle.",
       "Spouses can accompany students and work full-time (for Masters programs)."
     ],
-    universities: [
-      { name: "University of Melbourne", location: "Melbourne, VIC", overview: "Australia's leading university for research and teaching", programs: ["Medicine", "Law", "Arts", "Engineering"], reputation: "Consistently ranked top in Australia" },
-      { name: "University of Sydney", location: "Sydney, NSW", overview: "Australia's first university with heritage campus", programs: ["Business", "Health Sciences", "Law", "Arts"], reputation: "Strong industry partnerships and graduate outcomes" },
-    ],
     courses: ["Engineering", "Healthcare", "Business", "IT & Computing", "Environmental Science"],
     scholarships: ["Australia Awards", "Destination Australia", "Research Training Program"],
     workRights: "Post-study work visa for 2-4 years depending on qualification level.",
@@ -139,10 +114,6 @@ const countries: CountryData[] = [
       "European headquarters for global tech giants like Google and Meta.",
       "The only native English-speaking country in the Eurozone.",
       "Fast-growing, resilient economy with extremely high graduate employability."
-    ],
-    universities: [
-      { name: "Trinity College Dublin", location: "Dublin", overview: "Ireland's oldest and most prestigious university", programs: ["Computer Science", "Business", "Law", "Medicine"], reputation: "World-renowned research and heritage" },
-      { name: "UCD", location: "Dublin", overview: "Ireland's largest university by student numbers", programs: ["Business", "Engineering", "Agriculture", "Veterinary"], reputation: "Strong industry connections" },
     ],
     courses: ["Technology", "Business", "Pharmaceutical Sciences", "Engineering", "Arts"],
     scholarships: ["Government of Ireland Scholarships", "University Scholarships"],
@@ -164,10 +135,6 @@ const countries: CountryData[] = [
       "Rich cultural heritage and a strategic location in the heart of the EU.",
       "Home to elite Grande Écoles specialized in business and engineering."
     ],
-    universities: [
-      { name: "Sorbonne University", location: "Paris", overview: "Historic institution in the heart of Paris", programs: ["Humanities", "Sciences", "Medicine", "Law"], reputation: "Global leader in arts and humanities" },
-      { name: "HEC Paris", location: "Paris", overview: "Premier business school in Europe", programs: ["MBA", "Finance", "Management", "Strategy"], reputation: "Top-ranked European business school" },
-    ],
     courses: ["Business", "Fashion & Design", "Engineering", "Culinary Arts", "Arts & Culture"],
     scholarships: ["Eiffel Excellence Scholarship", "Campus France Grants", "Erasmus+"],
     workRights: "APS visa allows job search after graduation. Work permit for qualified employment.",
@@ -187,10 +154,6 @@ const countries: CountryData[] = [
       "Beautiful Mediterranean climate in one of Europe's safest environments.",
       "No IELTS score required for admission into many top-tier programs.",
       "A strategic geographical gateway connecting European and Middle Eastern markets."
-    ],
-    universities: [
-      { name: "European University Cyprus", location: "Nicosia", overview: "Largest private university in Cyprus", programs: ["Business", "Management", "Marketing", "Finance"], reputation: "International business destination" },
-      { name: "Frederick University", location: "Nicosia & Limassol", overview: "Private university with dual campuses", programs: ["Business Administration", "Management", "Economics"], reputation: "Flexible learning options" },
     ],
     courses: ["Business Administration (BBA)", "International Business (BSBA)", "Finance", "Marketing", "Economics", "Management"],
     scholarships: ["Merit-based Scholarships", "Need-based Financial Aid", "Sports Scholarships"],
@@ -212,10 +175,6 @@ const countries: CountryData[] = [
       "Global economic powerhouse driving innovation in engineering and tech.",
       "Strong integration with local industries for paid internships and placements."
     ],
-    universities: [
-      { name: "TU Munich", location: "Munich", overview: "Germany's top technical university", programs: ["Engineering", "Computer Science", "Natural Sciences", "Medicine"], reputation: "Leading European tech institution" },
-      { name: "LMU Munich", location: "Munich", overview: "Historic research university founded in 1472", programs: ["Medicine", "Law", "Humanities", "Sciences"], reputation: "Germany's top-ranked university" },
-    ],
     courses: ["Engineering", "Automotive", "Sciences", "Medicine", "Business"],
     scholarships: ["DAAD Scholarships", "Deutschlandstipendium", "Erasmus+"],
     workRights: "18-month job seeker visa. Blue Card for skilled workers.",
@@ -235,10 +194,6 @@ const countries: CountryData[] = [
       "Significantly lower cost of living compared to Western European nations.",
       "Strategic geographic location right in the heart of central Europe.",
       "Rapidly growing business and corporate administration sectors."
-    ],
-    universities: [
-      { name: "Comenius University", location: "Bratislava", overview: "Slovakia's largest and oldest university", programs: ["Management", "Business", "Economics", "Law"], reputation: "Leading comprehensive university" },
-      { name: "Matej Bel University", location: "Kosice", overview: "Major university in eastern Slovakia", programs: ["Public Administration", "Business", "Economics"], reputation: "Affordable business education" },
     ],
     courses: ["Business Administration (BBA)", "International Business (BSBA)", "Finance", "Marketing", "Economics", "Management"],
     scholarships: ["Government Scholarships", "University Grants", "EU Funding Programs"],
@@ -260,11 +215,7 @@ const countries: CountryData[] = [
       "Immersive, rich cultural and historical experience for international students.",
       "Streamlined admission process with no entrance exams required for many universities."
     ],
-    universities: [
-      { name: "Moscow State Medical University", location: "Moscow", overview: "Russia's most prestigious medical university", programs: ["Medicine", "Dentistry", "Pharmacy"], reputation: "Global leader in medical research" },
-      { name: "Kazan Federal University", location: "Kazan", overview: "Historic university with a massive medical campus", programs: ["Medicine", "Pediatrics", "Dentistry"], reputation: "Prestigious medical institution with global alumni" },
-    ],
-    courses: ["Medicine (MBBS)", "Dentistry", "Nursing", "Pharmacy", "Public Health"], // UPDATED COURSES (MEDICAL ONLY)
+    courses: ["Medicine (MBBS)", "Dentistry", "Nursing", "Pharmacy", "Public Health"],
     scholarships: ["Russian Government Scholarships", "University Grants", "Bilateral Agreements"],
     workRights: "Work permit available. Opportunities in various sectors.",
     intakes: ["September", "February"],
@@ -283,10 +234,6 @@ const countries: CountryData[] = [
       "Incredibly convenient visa-free entry rules for many international students.",
       "Extremely safe, welcoming cultural environment with very low living costs.",
       "Globally recognized degrees that allow you to practice medicine worldwide."
-    ],
-    universities: [
-      { name: "Tbilisi State Medical University", location: "Tbilisi", overview: "Georgia's largest medical university", programs: ["Medicine", "Dentistry", "Pharmacy", "Nursing"], reputation: "Leading medical comprehensive university" },
-      { name: "European University", location: "Tbilisi", overview: "Modern research-focused medical facility", programs: ["Medicine", "Dentistry"], reputation: "Innovation and clinical research leader" },
     ],
     courses: ["Medicine (MBBS)", "Dentistry", "Pharmacy", "Nursing", "Public Health"],
     scholarships: ["Government Programs", "University Scholarships", "Partner Institution Grants"],
@@ -308,10 +255,6 @@ const countries: CountryData[] = [
       "Extensive clinical training opportunities in modern, affiliated hospitals.",
       "A remarkably simple, fast, and hassle-free student visa process."
     ],
-    universities: [
-      { name: "KSMU", location: "Bishkek", overview: "Kyrgyz State Medical University - top medical school", programs: ["Medicine (MBBS)", "Dentistry", "Pharmacy", "Nursing"], reputation: "WHO and NMC recognized" },
-      { name: "International Medical University", location: "Bishkek", overview: "Modern medical institution", programs: ["Medicine", "Pharmacy", "Public Health"], reputation: "International curriculum" },
-    ],
     courses: ["Medicine (MBBS)", "Dentistry", "Pharmacy", "Nursing", "Public Health"],
     scholarships: ["Government Scholarships", "University Financial Aid", "Merit-based Grants"],
     workRights: "Simple visa process. Clinical training opportunities.",
@@ -322,8 +265,8 @@ const countries: CountryData[] = [
   },
 ]
 
-// India coordinates for flight path
-const indiaCoords = { x: 67.6, y: 29.6 }
+// Fixed India coordinates
+const indiaCoords = { x: 70.5, y: 26.5 }
 
 const mapMarkerCoordinates: Record<string, { x: number; y: number }> = {
   USA: { x: 23.5, y: 24.1 },
@@ -374,12 +317,11 @@ function ImageWithFallback({ src, alt, className, fill, ...props }: { src: strin
 export default function StudyDestinations() {
   const [selectedCountry, setSelectedCountry] = useState<CountryData>(countries[0])
   const [hoveredCountry, setHoveredCountry] = useState<CountryData | null>(null)
-  const [expandedUniversity, setExpandedUniversity] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<"overview" | "universities">("overview")
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+  
   const selectedMapCoordinates = getMapCoordinates(selectedCountry)
   const hoveredMapCoordinates = hoveredCountry ? getMapCoordinates(hoveredCountry) : null
   const selectedFlightPath = getFlightPath(selectedMapCoordinates)
@@ -387,17 +329,13 @@ export default function StudyDestinations() {
   const handleCountrySelect = (country: CountryData) => {
     if (country.code !== selectedCountry.code) {
       setSelectedCountry(country)
-      setExpandedUniversity(null)
-      setActiveTab("overview")
     }
   }
 
   return (
     <section id="destinations" ref={ref} className="relative py-20 lg:py-24 bg-white overflow-hidden w-full border-t border-gray-100">
       
-      {/* Locked PC Width Container */}
       <div className="relative max-w-[1400px] mx-auto w-full px-6 lg:px-12">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -428,7 +366,7 @@ export default function StudyDestinations() {
             </span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Click on any country to explore universities, programs, scholarships, and career opportunities.
+            Click on any country to explore programs, scholarships, and career opportunities.
             <br className="hidden sm:block" />
             Your journey from India to the world starts here.
           </p>
@@ -436,19 +374,16 @@ export default function StudyDestinations() {
 
         <div className="grid lg:grid-cols-5 gap-8 items-start">
           
-          {/* LEFT COLUMN: Map + NEW Advantages Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-3 space-y-8"
           >
-            {/* Glassmorphism Map Container */}
             <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[#F8FAFC] shadow-xl">
               <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
 
               <div className="relative p-4 sm:p-6 lg:p-8">
-                {/* Interactive World Map */}
                 <div className="relative">
                   <svg viewBox="0 0 100 56" className="w-full h-auto" role="img" aria-label="Bold Overseas study destination map">
                     <defs>
@@ -575,41 +510,42 @@ export default function StudyDestinations() {
                       </motion.g>
                     </AnimatePresence>
 
-                    {/* India Origin Marker */}
-                    <motion.g
-                      transform={`translate(${indiaCoords.x} ${indiaCoords.y})`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.35 }}
-                    >
-                      <title>India origin</title>
-                      <motion.circle
-                        r="2.5"
-                        fill="none"
-                        stroke="#FF9933"
-                        strokeWidth="0.2"
-                        initial={{ scale: 0.72, opacity: 0.9 }}
-                        animate={{ scale: 2.05, opacity: 0 }}
-                        transition={{ duration: 2.25, repeat: Infinity, ease: "easeOut" }}
-                      />
-                      <motion.circle
-                        r="2.0"
-                        fill="none"
-                        stroke="#138808"
-                        strokeWidth="0.2"
-                        initial={{ scale: 0.72, opacity: 0.8 }}
-                        animate={{ scale: 1.75, opacity: 0 }}
-                        transition={{ duration: 2.25, repeat: Infinity, ease: "easeOut", delay: 0.55 }}
-                      />
-                      <path
-                        d="M0 -2.1 C1.05 -2.1 1.87 -1.27 1.87 -0.22 C1.87 1.2 0 2.57 0 2.57 C0 2.57 -1.87 1.2 -1.87 -0.22 C-1.87 -1.27 -1.05 -2.1 0 -2.1Z"
-                        fill="url(#indiaGlow)"
-                        stroke="#0B3B7A"
-                        strokeWidth="0.2"
-                        filter="url(#pinShadow)"
-                      />
-                      <circle r="0.6" cy="-0.22" fill="#0B3B7A" opacity="0.9" />
-                    </motion.g>
+                    {/* India Origin Marker (Text Removed) */}
+                    <g transform={`translate(${indiaCoords.x} ${indiaCoords.y})`}>
+                      <motion.g
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.35 }}
+                      >
+                        <title>India</title>
+                        <motion.circle
+                          r="2.5"
+                          fill="none"
+                          stroke="#FF9933"
+                          strokeWidth="0.2"
+                          initial={{ scale: 0.72, opacity: 0.9 }}
+                          animate={{ scale: 2.05, opacity: 0 }}
+                          transition={{ duration: 2.25, repeat: Infinity, ease: "easeOut" }}
+                        />
+                        <motion.circle
+                          r="2.0"
+                          fill="none"
+                          stroke="#138808"
+                          strokeWidth="0.2"
+                          initial={{ scale: 0.72, opacity: 0.8 }}
+                          animate={{ scale: 1.75, opacity: 0 }}
+                          transition={{ duration: 2.25, repeat: Infinity, ease: "easeOut", delay: 0.55 }}
+                        />
+                        <path
+                          d="M0 -2.1 C1.05 -2.1 1.87 -1.27 1.87 -0.22 C1.87 1.2 0 2.57 0 2.57 C0 2.57 -1.87 1.2 -1.87 -0.22 C-1.87 -1.27 -1.05 -2.1 0 -2.1Z"
+                          fill="url(#indiaGlow)"
+                          stroke="#0B3B7A"
+                          strokeWidth="0.2"
+                          filter="url(#pinShadow)"
+                        />
+                        <circle r="0.6" cy="-0.22" fill="#0B3B7A" opacity="0.9" />
+                      </motion.g>
+                    </g>
 
                     {/* Country Markers */}
                     {countries.map((country, index) => {
@@ -695,7 +631,6 @@ export default function StudyDestinations() {
                   </AnimatePresence>
                 </div>
 
-                {/* Country Quick Select - Mobile */}
                 <div className="lg:hidden mt-6 flex flex-wrap gap-2 justify-center">
                   {countries.map((country) => (
                     <motion.button
@@ -716,7 +651,6 @@ export default function StudyDestinations() {
               </div>
             </div>
 
-            {/* NEW: Advantages Card */}
             <motion.div
               key={`adv-${selectedCountry.code}`}
               initial={{ opacity: 0, y: 20 }}
@@ -743,7 +677,6 @@ export default function StudyDestinations() {
             </motion.div>
           </motion.div>
 
-          {/* Country Information Card - Right Side */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -761,7 +694,6 @@ export default function StudyDestinations() {
               >
                 
                 <div className="relative">
-                  {/* Country Hero Image */}
                   <div className="relative h-52 overflow-hidden sm:h-56">
                     <ImageWithFallback
                       src={selectedCountry.image}
@@ -770,7 +702,6 @@ export default function StudyDestinations() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B3B7A] via-[#0B3B7A]/50 to-transparent" />
                     
-                    {/* Country Flag Badge */}
                     <div className="absolute top-4 right-4">
                       <div className="w-12 h-8 rounded-lg overflow-hidden shadow-lg border-2 border-white/30">
                         <img src={selectedCountry.flag} alt={`${selectedCountry.name} flag`} className="w-full h-full object-cover" />
@@ -783,218 +714,107 @@ export default function StudyDestinations() {
                     </div>
                   </div>
 
-                  {/* Tab Navigation */}
-                  <div className="flex border-b border-gray-100 bg-white">
-                    <button
-                      onClick={() => setActiveTab("overview")}
-                      className={`flex-1 py-3 text-sm font-semibold transition-all ${
-                        activeTab === "overview"
-                          ? "text-[#0B3B7A] border-b-2 border-[#0B3B7A]"
-                          : "text-gray-500 hover:text-gray-700"
-                      }`}
-                    >
-                      Overview
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("universities")}
-                      className={`flex-1 py-3 text-sm font-semibold transition-all ${
-                        activeTab === "universities"
-                          ? "text-[#0B3B7A] border-b-2 border-[#0B3B7A]"
-                          : "text-gray-500 hover:text-gray-700"
-                      }`}
-                    >
-                      Universities
-                    </button>
-                  </div>
-
-                  {/* Content */}
                   <div className="max-h-[540px] overflow-y-auto p-5 custom-scrollbar sm:p-6 lg:max-h-[620px]">
-                    <AnimatePresence mode="wait">
-                      {activeTab === "overview" ? (
-                        <motion.div
-                          key="overview"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 10 }}
-                          className="space-y-5"
-                        >
-                          {/* Overview */}
-                          <div>
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              Overview
-                            </h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">{selectedCountry.overview}</p>
-                          </div>
+                    <div className="space-y-5">
+                      <div>
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          Overview
+                        </h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">{selectedCountry.overview}</p>
+                      </div>
 
-                          {/* Popular Courses */}
-                          <div>
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                              </svg>
-                              Popular Courses
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                              {selectedCountry.courses.map((course) => (
-                                <span key={course} className="px-3 py-1.5 bg-[#1D4ED8]/5 rounded-full text-xs font-medium text-[#1D4ED8]">
-                                  {course}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Scholarships */}
-                          <div>
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              Scholarship Opportunities
-                            </h4>
-                            <div className="space-y-1.5">
-                              {selectedCountry.scholarships.slice(0, 4).map((scholarship) => (
-                                <div key={scholarship} className="flex items-center gap-2 text-sm text-gray-600">
-                                  <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                  </svg>
-                                  {scholarship}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Work Rights */}
-                          <div className="p-4 bg-green-50 rounded-xl border border-green-100">
-                            <h4 className="text-sm font-semibold text-green-700 mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                              </svg>
-                              Work Rights
-                            </h4>
-                            <p className="text-sm text-green-700">{selectedCountry.workRights}</p>
-                          </div>
-
-                          {/* Intakes */}
-                          <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-3 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                              </svg>
-                              Intakes
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                              {selectedCountry.intakes.map((intake) => (
-                                <span key={intake} className="rounded-full bg-[#0B3B7A]/5 px-3 py-1.5 text-xs font-semibold text-[#0B3B7A]">
-                                  {intake}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Career Opportunities */}
-                          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-3 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4m16 0v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7m16 0H4m6 0V5h4v2" />
-                              </svg>
-                              Career Opportunities
-                            </h4>
-                            <div className="grid gap-2 sm:grid-cols-2">
-                              {selectedCountry.careerOpportunities.map((career) => (
-                                <div key={career} className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-[#0B3B7A] shadow-sm">
-                                  <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#1D4ED8]" />
-                                  {career}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Visa Support */}
-                          <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                            <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                              </svg>
-                              Bold Overseas Visa Support
-                            </h4>
-                            <p className="text-sm text-gray-600">{selectedCountry.visaSupport}</p>
-                          </div>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="universities"
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -10 }}
-                          className="space-y-3"
-                        >
-                          {selectedCountry.universities.map((uni) => (
-                            <motion.div
-                              key={uni.name}
-                              layout
-                              className="rounded-xl border border-gray-100 overflow-hidden bg-white hover:shadow-md transition-shadow"
-                            >
-                              <button
-                                onClick={() => setExpandedUniversity(expandedUniversity === uni.name ? null : uni.name)}
-                                className="w-full p-4 text-left flex items-center justify-between"
-                              >
-                                <div>
-                                  <h5 className="font-semibold text-[#0B3B7A] text-sm">{uni.name}</h5>
-                                  <p className="text-xs text-gray-500">{uni.location}</p>
-                                </div>
-                                <motion.svg
-                                  animate={{ rotate: expandedUniversity === uni.name ? 180 : 0 }}
-                                  className="w-5 h-5 text-gray-400"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                </motion.svg>
-                              </button>
-                              
-                              <AnimatePresence>
-                                {expandedUniversity === uni.name && (
-                                  <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="overflow-hidden"
-                                  >
-                                    <div className="px-4 pb-4 space-y-3 border-t border-gray-50 pt-3">
-                                      <div>
-                                        <h6 className="text-xs font-semibold text-gray-500 mb-1">Overview</h6>
-                                        <p className="text-xs text-gray-600">{uni.overview}</p>
-                                      </div>
-                                      <div>
-                                        <h6 className="text-xs font-semibold text-gray-500 mb-1">Popular Programs</h6>
-                                        <div className="flex flex-wrap gap-1">
-                                          {uni.programs.map((program) => (
-                                            <span key={program} className="px-2 py-0.5 bg-[#0B3B7A]/5 rounded text-xs text-[#0B3B7A]">
-                                              {program}
-                                            </span>
-                                          ))}
-                                        </div>
-                                      </div>
-                                      <div>
-                                        <h6 className="text-xs font-semibold text-gray-500 mb-1">Global Reputation</h6>
-                                        <p className="text-xs text-gray-600">{uni.reputation}</p>
-                                      </div>
-                                    </div>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                            </motion.div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                          Popular Courses
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedCountry.courses.map((course) => (
+                            <span key={course} className="px-3 py-1.5 bg-[#1D4ED8]/5 rounded-full text-xs font-medium text-[#1D4ED8]">
+                              {course}
+                            </span>
                           ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        </div>
+                      </div>
 
-                    {/* CTA Button */}
+                      <div>
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          Scholarship Opportunities
+                        </h4>
+                        <div className="space-y-1.5">
+                          {selectedCountry.scholarships.slice(0, 4).map((scholarship) => (
+                            <div key={scholarship} className="flex items-center gap-2 text-sm text-gray-600">
+                              <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              {scholarship}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-green-50 rounded-xl border border-green-100">
+                        <h4 className="text-sm font-semibold text-green-700 mb-2 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                          Work Rights
+                        </h4>
+                        <p className="text-sm text-green-700">{selectedCountry.workRights}</p>
+                      </div>
+
+                      <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-3 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          Intakes
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedCountry.intakes.map((intake) => (
+                            <span key={intake} className="rounded-full bg-[#0B3B7A]/5 px-3 py-1.5 text-xs font-semibold text-[#0B3B7A]">
+                              {intake}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-3 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4m16 0v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7m16 0H4m6 0V5h4v2" />
+                          </svg>
+                          Career Opportunities
+                        </h4>
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          {selectedCountry.careerOpportunities.map((career) => (
+                            <div key={career} className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-[#0B3B7A] shadow-sm">
+                              <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#1D4ED8]" />
+                              {career}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                        <h4 className="text-sm font-semibold text-[#0B3B7A] mb-2 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                          Bold Overseas Visa Support
+                        </h4>
+                        <p className="text-sm text-gray-600">{selectedCountry.visaSupport}</p>
+                      </div>
+                    </div>
+
                     <div className="pt-5 mt-5 border-t border-gray-100">
                       <Link href={`/book-consultation?country=${encodeURIComponent(selectedCountry.name)}`}>
                         <motion.button
@@ -1002,7 +822,7 @@ export default function StudyDestinations() {
                           whileTap={{ scale: 0.98 }}
                           className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl transition-all flex items-center justify-center gap-2"
                         >
-                          <span>Book Consultation for {selectedCountry.name}</span>
+                          <span>Connect With Our Experts</span>
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>

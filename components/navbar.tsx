@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image" // <-- Added the Image component
 
 // --- UPDATED MENU ITEMS ---
 const menuItems = [
@@ -15,15 +16,15 @@ const menuItems = [
     href: "/#about"
   },
   {
-    name: "Destinations", // Changed from Study Destinations
-    href: "/destinations" // Removed the '#' so it links to the actual page
+    name: "Destinations",
+    href: "/destinations"
   },
   {
     name: "Services",
     href: "/services"
   },
   {
-    name: "Blog",         // Added the missing Blog link!
+    name: "Blog",
     href: "/blog"
   },
   {
@@ -62,11 +63,16 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between h-20">
           
-          <Link href="/" className="flex items-center group">
-            <img
+          <Link href="/" className="flex items-center group relative h-14 w-40">
+            {/* --- UPGRADED TO NEXT/IMAGE --- */}
+            {/* Note: I kept the external Vercel blob link for now to ensure it doesn't break, 
+                but you should download this logo to public/bold-logo.png eventually! */}
+            <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BOLD%20LOGO-H5T6j6nLhuoDiyRMQgkVxuXplVcrCf.png"
               alt="Bold Overseas"
-              className="h-14 w-auto object-contain"
+              fill
+              className="object-contain"
+              priority // Prioritize loading the logo
             />
           </Link>
 
@@ -85,7 +91,7 @@ export default function Navbar() {
           <div className="hidden lg:flex">
             <Link href="/book-consultation">
               <button className="px-6 py-3 rounded-full bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                Book A Call With CEO
+                Connect With Our Experts
               </button>
             </Link>
           </div>

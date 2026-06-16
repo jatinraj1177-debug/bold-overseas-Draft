@@ -284,7 +284,7 @@ export default function ContactPage() {
 
               {/* CEO Consultation */}
               <div className="bg-gradient-to-br from-[#0B3B7A] to-[#1D4ED8] rounded-3xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-3">Book A Call With CEO</h3>
+                <h3 className="text-xl font-bold mb-3">Connect With Our Experts</h3>
                 <p className="text-white/80 mb-6 text-sm leading-relaxed">
                   Get personalized guidance directly from our CEO. Schedule a one-on-one consultation to discuss your study abroad goals.
                 </p>

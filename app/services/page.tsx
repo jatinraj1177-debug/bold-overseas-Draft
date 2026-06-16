@@ -796,7 +796,7 @@ export default function ServicesPage() {
                   whileTap={{ scale: 0.98 }}
                   className="px-8 py-4 bg-white text-[#0B3B7A] font-semibold rounded-full shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
                 >
-                  Book A Call With CEO
+                  Connect With Our Experts
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -859,7 +859,7 @@ export default function ServicesPage() {
                 whileTap={{ scale: 0.98 }}
                 className="px-10 py-4 bg-gradient-to-r from-[#0B3B7A] to-[#2563EB] text-white font-semibold rounded-full shadow-lg shadow-blue-500/25 hover:shadow-xl transition-shadow flex items-center justify-center gap-2 mx-auto"
               >
-                Book A Call With CEO
+                Connect With Our Experts
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

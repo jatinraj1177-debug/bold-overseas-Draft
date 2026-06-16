@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import Link from "next/link"
+import Image from "next/image"
+import { Plane, GraduationCap } from "lucide-react"
 
 const trustMetrics = [
   { number: "15,000+", label: "Success Stories" },
@@ -27,82 +29,51 @@ export default function HeroSection() {
     <section
       id="home"
       ref={ref}
-      className="relative min-h-[calc(100vh-80px)] bg-white overflow-hidden pt-12 pb-16 flex flex-col justify-center w-full"
+      className="relative min-h-[calc(100vh-80px)] bg-[#f8fafc] overflow-hidden pt-12 pb-16 flex flex-col justify-center w-full"
     >
-      {/* --- PREMIUM THEMATIC BACKGROUND ANIMATIONS --- */}
+      {/* --- INJECTED CSS FOR THE SEAMLESS GLOBE ROTATION --- */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes spinEarth {
+          0% { background-position: 0% 0; }
+          100% { background-position: 200% 0; }
+        }
+      `}} />
+
+      {/* --- PREMIUM AMBIENT BACKGROUND GLOW --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#0B3B7A]/5 to-blue-300/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-cyan-400/5 to-[#1D4ED8]/5 rounded-full blur-3xl" />
-
-        <motion.div
-          className="absolute top-[20%] opacity-20 text-[#1D4ED8]"
-          animate={{ x: ["-10vw", "110vw"], y: [50, -50] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        >
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor" className="rotate-45">
-            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
-          </svg>
-        </motion.div>
-
-        {/* Floating Graduation Caps */}
-        <motion.div
-          className="absolute left-[10%] opacity-25 text-[#0B3B7A]"
-          animate={{
-            y: ["110vh", "-20vh"],
-            rotate: [-15, 25, -15],
-            x: [0, 40, -30, 0]
-          }}
-          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        >
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9z" />
-          </svg>
-        </motion.div>
-
-        <motion.div
-          className="absolute right-[15%] opacity-20 text-[#1D4ED8]"
-          animate={{
-            y: ["110vh", "-20vh"],
-            rotate: [20, -20, 15],
-            x: [0, -50, 30, 0]
-          }}
-          transition={{ duration: 26, repeat: Infinity, ease: "linear", delay: 4 }}
-        >
-          <svg width="68" height="68" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9z" />
-          </svg>
-        </motion.div>
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-sky-400/15 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-[#1D4ED8]/10 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Side: Content Column */}
+          {/* --- LEFT SIDE: CONTENT COLUMN --- */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 space-y-6 text-left"
+            className="lg:col-span-6 space-y-6 text-left relative z-20"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3B7A]/5 border border-[#0B3B7A]/10 w-fit"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-sky-100 shadow-sm w-fit"
             >
-              <span className="w-2 h-2 rounded-full bg-[#1D4ED8] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
               <span className="text-xs sm:text-sm font-bold tracking-wide text-[#0B3B7A] uppercase">Empowering 15,000+ Global Scholars</span>
             </motion.div>
 
             <div className="space-y-1 sm:space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B3B7A] leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight text-[#0B3B7A] leading-[1.1]">
                 Global Ambitions.
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B3B7A] leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight text-[#0B3B7A] leading-[1.1]">
                 Strategic Guidance.
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
-                <span className="bg-gradient-to-r from-[#0B3B7A] via-[#1D4ED8] to-[#3B82F6] bg-clip-text text-transparent">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight leading-[1.1]">
+                <span className="bg-gradient-to-r from-sky-400 via-[#1D4ED8] to-[#0B3B7A] bg-clip-text text-transparent">
                   Unrivaled Success.
                 </span>
               </h1>
@@ -122,7 +93,7 @@ export default function HeroSection() {
                   className="text-left"
                 >
                   <div className="text-xl sm:text-2xl font-black text-[#0B3B7A]">{metric.number}</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-400 mt-0.5">{metric.label}</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-500 mt-0.5">{metric.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -131,53 +102,101 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 }}
-              className="pt-2"
+              className="pt-4"
             >
               <Link href="/book-consultation">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-bold shadow-lg shadow-blue-500/25 transition-all text-base"
+                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-bold shadow-lg shadow-blue-500/25 transition-all text-base flex items-center gap-2"
                 >
-                  Book A Call With CEO
+                  Connect With Our Experts
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </motion.button>
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Right Side: Visual Layer */}
+          {/* --- RIGHT SIDE: REALISTIC BRIGHT GLOBE & SIMPLE ICON ORBITS --- */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 relative flex justify-center items-center h-[380px] lg:h-[450px]"
+            className="lg:col-span-6 relative flex flex-col items-center justify-center mt-12 lg:mt-0"
           >
-            <div className="relative w-full max-w-md flex justify-center items-center">
+            
+            <div className="relative flex justify-center items-center w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[500px] aspect-square mx-auto">
               
-              {/* Premium Dark Globe Lineart Rotation Overlay */}
-              <motion.svg 
-                viewBox="0 0 100 100" 
-                className="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] text-[#0B3B7A]/15 -z-10"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-              >
-                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="1" />
-                <line x1="50" y1="4" x2="50" y2="96" stroke="currentColor" strokeWidth="0.8" />
-                <line x1="4" y1="50" x2="96" y2="50" stroke="currentColor" strokeWidth="0.8" />
-                <path d="M 50 4 C 68 25, 68 75, 50 96" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                <path d="M 50 4 C 32 25, 32 75, 50 96" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                <path d="M 50 4 C 82 25, 82 75, 50 96" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" />
-                <path d="M 50 4 C 18 25, 18 75, 50 96" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" />
-                <path d="M 8.5 30 Q 50 38 91.5 30" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                <path d="M 8.5 70 Q 50 62 91.5 70" fill="none" stroke="currentColor" strokeWidth="0.8" />
-              </motion.svg>
+              {/* Vibrant Outer Blue Glow */}
+              <div className="absolute inset-0 bg-sky-400/20 rounded-full blur-[80px] pointer-events-none" />
 
-              {/* ORIGINAL SVG CLIP-PATH LETTERS (Fixed with overflow-visible to stop crashing) */}
-              <div className="flex justify-center items-end gap-2 sm:gap-3 z-10 relative">
+              {/* --- ORBIT 1: The Flight Path (Clean SVG Animation) --- */}
+              <div className="absolute w-[125%] h-[125%] border-[1.5px] border-sky-400/40 rounded-full border-dashed z-20" style={{ transform: "rotateX(65deg) rotateY(-15deg)" }}>
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
+                  {/* Clean Airplane Icon without the button background */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
+                    <Plane className="w-8 h-8 text-sky-500" strokeWidth={2.5} style={{ transform: "rotate(90deg)" }} />
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* --- ORBIT 2: The Education Path (Clean SVG Animation) --- */}
+              <div className="absolute w-[145%] h-[145%] border-[1.5px] border-[#1D4ED8]/30 rounded-full z-0" style={{ transform: "rotateX(75deg) rotateY(25deg)" }}>
+                <motion.div animate={{ rotate: -360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
+                  {/* Clean Graduation Cap without the button background */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 drop-shadow-[0_0_8px_rgba(29,78,216,0.6)]">
+                    <GraduationCap className="w-8 h-8 text-[#1D4ED8]" strokeWidth={2} />
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* --- THE VIBRANT SKY BLUE GLOBE --- */}
+              <div className="relative z-10 w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-[0_20px_50px_rgba(56,189,248,0.3)] border border-sky-200/50 bg-[#e0f2fe]">
+                
+                {/* The spinning Earth Map 
+                  Boosted with CSS filters to make it brighter, less dull, and more sky-blue
+                */}
+                <div 
+                  className="absolute inset-0 w-full h-full opacity-100 mix-blend-multiply"
+                  style={{
+                    backgroundImage: "url('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')",
+                    backgroundSize: "200% 100%",
+                    animation: "spinEarth 40s linear infinite",
+                    filter: "brightness(1.4) contrast(1.1) hue-rotate(-15deg)"
+                  }}
+                />
+
+                {/* Sky Blue Color Overlay to make the oceans pop */}
+                <div className="absolute inset-0 bg-sky-300/30 mix-blend-color pointer-events-none" />
+
+                {/* Softer 3D Inner Shadow (Removes the harsh dark edge) */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_-20px_-20px_40px_rgba(11,59,122,0.4),inset_10px_10px_30px_rgba(255,255,255,0.7)] pointer-events-none" />
+              </div>
+
+              {/* --- 3. FLOATING COUNTRY FLAGS --- */}
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute z-30 top-[8%] left-[2%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+                <Image alt="Canada" className="object-cover" fill sizes="48px" src="/hero/ca.png"/>
+              </motion.div>
+
+              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute z-30 top-[20%] right-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+                <Image alt="UK" className="object-cover" fill sizes="48px" src="/hero/gb.png"/>
+              </motion.div>
+
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute z-30 bottom-[15%] left-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+                <Image alt="USA" className="object-cover" fill sizes="48px" src="/hero/us.png"/>
+              </motion.div>
+
+            </div>
+
+            {/* --- BOLD LETTERS (Foreground Layer) --- */}
+            <div className="relative z-40 flex flex-col items-center justify-center -mt-10 sm:-mt-16 pointer-events-none">
+              <div className="flex justify-center items-end gap-2 sm:gap-3">
                 
                 {/* B - USA */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.3 }} className="relative">
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-26 h-auto drop-shadow-2xl transition-transform duration-300 hover:-translate-y-2 overflow-visible">
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.3 }}>
+                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
                     <defs>
                       <clipPath id="clipB"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">B</text></clipPath>
                       <linearGradient id="usaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -196,8 +215,8 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* O - UK */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.4 }} className="relative">
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-26 h-auto drop-shadow-2xl transition-transform duration-300 hover:-translate-y-2 overflow-visible">
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.4 }}>
+                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
                     <defs>
                       <clipPath id="clipO"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">O</text></clipPath>
                     </defs>
@@ -211,23 +230,29 @@ export default function HeroSection() {
                   </svg>
                 </motion.div>
 
-                {/* L - Germany */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5 }} className="relative">
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-26 h-auto drop-shadow-2xl transition-transform duration-300 hover:-translate-y-2 overflow-visible">
+                {/* L - FRANCE */}
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5 }}>
+                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
                     <defs>
                       <clipPath id="clipL"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">L</text></clipPath>
+                      <linearGradient id="franceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#0055A4" />
+                        <stop offset="33.3%" stopColor="#0055A4" />
+                        <stop offset="33.3%" stopColor="#FFFFFF" />
+                        <stop offset="66.6%" stopColor="#FFFFFF" />
+                        <stop offset="66.6%" stopColor="#EF4135" />
+                        <stop offset="100%" stopColor="#EF4135" />
+                      </linearGradient>
                     </defs>
                     <g clipPath="url(#clipL)">
-                      <rect width="100" height="46.6" fill="#000000" />
-                      <rect y="46.6" width="100" height="46.6" fill="#FF0000" />
-                      <rect y="93.2" width="100" height="46.8" fill="#FFCC00" />
+                      <rect width="100" height="140" fill="url(#franceGrad)" />
                     </g>
                   </svg>
                 </motion.div>
 
                 {/* D - Australia */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6 }} className="relative">
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-26 h-auto drop-shadow-2xl transition-transform duration-300 hover:-translate-y-2 overflow-visible">
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6 }}>
+                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
                     <defs>
                       <clipPath id="clipD"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">D</text></clipPath>
                     </defs>
@@ -248,25 +273,19 @@ export default function HeroSection() {
                 </motion.div>
               </div>
               
-              {/* Overseas Banner Label */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-10 left-0 right-0 text-center z-20"
-              >
-                <div className="tracking-[0.4em] text-[#0B3B7A] font-black text-lg sm:text-xl bg-white/90 backdrop-blur-md border border-gray-100 rounded-full py-2 px-8 mx-auto inline-block shadow-lg">
+              <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.8 }} className="mt-3 sm:mt-4">
+                <div className="tracking-[0.45em] text-[#0B3B7A] font-black text-lg sm:text-xl bg-white/90 backdrop-blur-md border border-sky-100 rounded-full py-2.5 px-8 mx-auto inline-block shadow-lg uppercase">
                   OVERSEAS
                 </div>
               </motion.div>
-
             </div>
+
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom Grid Stats Block */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 mt-14">
+      {/* --- BOTTOM GRID STATS BLOCK --- */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 mt-16 sm:mt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -280,10 +299,10 @@ export default function HeroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.9 + index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all text-center"
+              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all text-center group"
             >
-              <h3 className="text-2xl sm:text-3xl font-black text-[#0B3B7A]">{item.number}</h3>
-              <p className="text-gray-500 font-semibold text-xs sm:text-sm mt-1">{item.label}</p>
+              <h3 className="text-3xl sm:text-4xl font-black text-[#0B3B7A] group-hover:text-sky-500 transition-colors">{item.number}</h3>
+              <p className="text-gray-500 font-semibold text-xs sm:text-sm mt-2">{item.label}</p>
             </motion.div>
           ))}
         </motion.div>
