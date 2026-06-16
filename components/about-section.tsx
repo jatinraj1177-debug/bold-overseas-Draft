@@ -120,7 +120,7 @@ export default function AboutSection() {
                 initial={{ clipPath: "inset(100% 0 0 0)" }}
                 animate={{ clipPath: "inset(0% 0 0 0)", zIndex: 10 }}
                 exit={{ clipPath: "inset(0 0 100% 0)", zIndex: 0 }}
-                transition={{ duration: 0.8, ease: customEase }}
+                transition={{ duration: 0.8, ease: customEase as any }}
               >
                 {/* Cinematic Slow Zoom (Ken Burns Effect) */}
                 <motion.img 
