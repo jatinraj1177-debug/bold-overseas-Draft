@@ -134,7 +134,7 @@ export default function HeroSection() {
 
               {/* --- ORBIT 1: The Flight Path (Clean SVG Animation) --- */}
               <div className="absolute w-[125%] h-[125%] border-[1.5px] border-sky-400/40 rounded-full border-dashed z-20" style={{ transform: "rotateX(65deg) rotateY(-15deg)" }}>
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }} className="w-full h-full relative">
                   {/* Clean Airplane Icon without the button background */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
                     <Plane className="w-8 h-8 text-sky-500" strokeWidth={2.5} style={{ transform: "rotate(90deg)" }} />
@@ -144,7 +144,7 @@ export default function HeroSection() {
 
               {/* --- ORBIT 2: The Education Path (Clean SVG Animation) --- */}
               <div className="absolute w-[145%] h-[145%] border-[1.5px] border-[#1D4ED8]/30 rounded-full z-0" style={{ transform: "rotateX(75deg) rotateY(25deg)" }}>
-                <motion.div animate={{ rotate: -360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
+                <motion.div animate={{ rotate: -360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" as const }} className="w-full h-full relative">
                   {/* Clean Graduation Cap without the button background */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 drop-shadow-[0_0_8px_rgba(29,78,216,0.6)]">
                     <GraduationCap className="w-8 h-8 text-[#1D4ED8]" strokeWidth={2} />
@@ -155,9 +155,7 @@ export default function HeroSection() {
               {/* --- THE VIBRANT SKY BLUE GLOBE --- */}
               <div className="relative z-10 w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-[0_20px_50px_rgba(56,189,248,0.3)] border border-sky-200/50 bg-[#e0f2fe]">
                 
-                {/* The spinning Earth Map 
-                  Boosted with CSS filters to make it brighter, less dull, and more sky-blue
-                */}
+                {/* The spinning Earth Map */}
                 <div 
                   className="absolute inset-0 w-full h-full opacity-100 mix-blend-multiply"
                   style={{
@@ -171,20 +169,20 @@ export default function HeroSection() {
                 {/* Sky Blue Color Overlay to make the oceans pop */}
                 <div className="absolute inset-0 bg-sky-300/30 mix-blend-color pointer-events-none" />
 
-                {/* Softer 3D Inner Shadow (Removes the harsh dark edge) */}
+                {/* Softer 3D Inner Shadow */}
                 <div className="absolute inset-0 rounded-full shadow-[inset_-20px_-20px_40px_rgba(11,59,122,0.4),inset_10px_10px_30px_rgba(255,255,255,0.7)] pointer-events-none" />
               </div>
 
               {/* --- 3. FLOATING COUNTRY FLAGS --- */}
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute z-30 top-[8%] left-[2%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" as const }} className="absolute z-30 top-[8%] left-[2%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
                 <Image alt="Canada" className="object-cover" fill sizes="48px" src="/hero/ca.png"/>
               </motion.div>
 
-              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute z-30 top-[20%] right-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: 1 }} className="absolute z-30 top-[20%] right-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
                 <Image alt="UK" className="object-cover" fill sizes="48px" src="/hero/gb.png"/>
               </motion.div>
 
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute z-30 bottom-[15%] left-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" as const, delay: 2 }} className="absolute z-30 bottom-[15%] left-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
                 <Image alt="USA" className="object-cover" fill sizes="48px" src="/hero/us.png"/>
               </motion.div>
 
