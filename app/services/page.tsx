@@ -456,8 +456,7 @@ function SnakeStep({ step, index, total }: { step: (typeof successPath)[0]; inde
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
   const isLeft = index % 2 === 0
   const isLast = index === total - 1
-
-  // Plane animation for connector
+// Plane animation for connector
   const planeVariants = {
     hidden: { x: isLeft ? -30 : 30, y: 0, opacity: 0 },
     visible: {
@@ -466,8 +465,8 @@ function SnakeStep({ step, index, total }: { step: (typeof successPath)[0]; inde
       opacity: 1,
       transition: {
         opacity: { duration: 0.3 },
-        x: { duration: 0.6, ease: "easeOut" },
-        y: { duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+        x: { duration: 0.6, ease: "easeOut" as const },
+        y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" as const, delay: 0.6 },
       },
     },
   }
