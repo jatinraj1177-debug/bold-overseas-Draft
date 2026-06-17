@@ -112,11 +112,11 @@ function BookConsultationContent() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0B3B7A] mb-6 leading-tight">
               Book A Call With{" "}
               <span className="bg-gradient-to-r from-[#0B3B7A] via-[#1D4ED8] to-[#3B82F6] bg-clip-text text-transparent">
-                Our CEO
+                Our EXPERTS
               </span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Get personalized guidance for your international education journey directly from our CEO. Schedule a one-on-one consultation today.
+              Get personalized guidance for your international education journey directly from our experts. Schedule a one-on-one consultation today.
             </p>
           </motion.div>
         </div>
@@ -152,7 +152,7 @@ function BookConsultationContent() {
                         </div>
                         <h3 className="text-2xl font-bold text-white mb-2">Personal Consultation</h3>
                         <p className="text-white/80 text-sm leading-relaxed mb-8">
-                          Connect directly with our CEO who has helped over 15,000+ students achieve their dreams.
+                          Connect directly with our experts who have helped over 15,000+ students achieve their dreams.
                         </p>
                       </div>
                     </div>

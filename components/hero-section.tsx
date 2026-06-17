@@ -29,7 +29,7 @@ export default function HeroSection() {
     <section
       id="home"
       ref={ref}
-      className="relative min-h-[calc(100vh-80px)] bg-[#f8fafc] overflow-hidden pt-12 pb-16 flex flex-col justify-center w-full"
+      className="relative min-h-[calc(100vh-80px)] bg-[#f8fafc] overflow-hidden pt-6 pb-10 flex flex-col justify-center w-full"
     >
       {/* --- INJECTED CSS FOR THE SEAMLESS GLOBE ROTATION --- */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -41,49 +41,50 @@ export default function HeroSection() {
 
       {/* --- PREMIUM AMBIENT BACKGROUND GLOW --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-sky-400/15 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-[#1D4ED8]/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-sky-400/15 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-[#1D4ED8]/10 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
           {/* --- LEFT SIDE: CONTENT COLUMN --- */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6 space-y-6 text-left relative z-20"
+            className="lg:col-span-6 space-y-4 sm:space-y-5 text-left relative z-20"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-sky-100 shadow-sm w-fit"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-sky-100 shadow-sm w-fit"
             >
               <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
               <span className="text-xs sm:text-sm font-bold tracking-wide text-[#0B3B7A] uppercase">Empowering 15,000+ Global Scholars</span>
             </motion.div>
 
-            <div className="space-y-1 sm:space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight text-[#0B3B7A] leading-[1.1]">
+            <div className="space-y-1">
+              {/* Scaled down text for perfect laptop fit */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[52px] xl:text-[60px] font-black tracking-tight text-[#0B3B7A] leading-[1.05]">
                 Global Ambitions.
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight text-[#0B3B7A] leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-[52px] xl:text-[60px] font-black tracking-tight text-[#0B3B7A] leading-[1.05]">
                 Strategic Guidance.
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-black tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-[52px] xl:text-[60px] font-black tracking-tight leading-[1.05]">
                 <span className="bg-gradient-to-r from-sky-400 via-[#1D4ED8] to-[#0B3B7A] bg-clip-text text-transparent">
                   Unrivaled Success.
                 </span>
               </h1>
             </div>
 
-            <p className="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed font-medium">
-              Elevate your international education journey with elite, end-to-end advisory. Bold Overseas transforms complex university admissions and visa processes into a clear, strategic roadmap for your global future.
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-lg leading-relaxed font-medium">
+              Elevate your international education journey with elite, end-to-end advisory. Bold Overseas transforms complex university admissions and visa processes into a clear, strategic roadmap.
             </p>
 
-            <div className="flex flex-wrap gap-6 pt-2">
+            <div className="flex flex-wrap gap-4 sm:gap-6 pt-1">
               {trustMetrics.map((metric, index) => (
                 <motion.div
                   key={metric.label}
@@ -92,8 +93,8 @@ export default function HeroSection() {
                   transition={{ delay: 0.4 + index * 0.1 }}
                   className="text-left"
                 >
-                  <div className="text-xl sm:text-2xl font-black text-[#0B3B7A]">{metric.number}</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-500 mt-0.5">{metric.label}</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-black text-[#0B3B7A]">{metric.number}</div>
+                  <div className="text-[10px] sm:text-xs lg:text-sm font-bold text-gray-500 mt-0.5">{metric.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -102,16 +103,16 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 }}
-              className="pt-4"
+              className="pt-2"
             >
               <Link href="/book-consultation">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-bold shadow-lg shadow-blue-500/25 transition-all text-base flex items-center gap-2"
+                  className="px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl bg-gradient-to-r from-[#0B3B7A] to-[#1D4ED8] text-white font-bold shadow-lg shadow-blue-500/25 transition-all text-sm sm:text-base flex items-center gap-2"
                 >
                   Connect With Our Experts
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </motion.button>
@@ -124,38 +125,35 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-6 relative flex flex-col items-center justify-center mt-12 lg:mt-0"
+            className="lg:col-span-6 relative flex flex-col items-center justify-center mt-8 lg:mt-0"
           >
             
-            <div className="relative flex justify-center items-center w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[500px] aspect-square mx-auto">
+            {/* Scaled down container wrapper */}
+            <div className="relative flex justify-center items-center w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[420px] aspect-square mx-auto">
               
               {/* Vibrant Outer Blue Glow */}
-              <div className="absolute inset-0 bg-sky-400/20 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute inset-0 bg-sky-400/20 rounded-full blur-[60px] pointer-events-none" />
 
-              {/* --- ORBIT 1: The Flight Path (Clean SVG Animation) --- */}
+              {/* --- ORBIT 1: The Flight Path --- */}
               <div className="absolute w-[125%] h-[125%] border-[1.5px] border-sky-400/40 rounded-full border-dashed z-20" style={{ transform: "rotateX(65deg) rotateY(-15deg)" }}>
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" as const }} className="w-full h-full relative">
-                  {/* Clean Airplane Icon without the button background */}
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
-                    <Plane className="w-8 h-8 text-sky-500" strokeWidth={2.5} style={{ transform: "rotate(90deg)" }} />
+                    <Plane className="w-6 h-6 sm:w-7 sm:h-7 text-sky-500" strokeWidth={2.5} style={{ transform: "rotate(90deg)" }} />
                   </div>
                 </motion.div>
               </div>
 
-              {/* --- ORBIT 2: The Education Path (Clean SVG Animation) --- */}
+              {/* --- ORBIT 2: The Education Path --- */}
               <div className="absolute w-[145%] h-[145%] border-[1.5px] border-[#1D4ED8]/30 rounded-full z-0" style={{ transform: "rotateX(75deg) rotateY(25deg)" }}>
-                <motion.div animate={{ rotate: -360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" as const }} className="w-full h-full relative">
-                  {/* Clean Graduation Cap without the button background */}
+                <motion.div animate={{ rotate: -360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" }} className="w-full h-full relative">
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 drop-shadow-[0_0_8px_rgba(29,78,216,0.6)]">
-                    <GraduationCap className="w-8 h-8 text-[#1D4ED8]" strokeWidth={2} />
+                    <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 text-[#1D4ED8]" strokeWidth={2} />
                   </div>
                 </motion.div>
               </div>
 
-              {/* --- THE VIBRANT SKY BLUE GLOBE --- */}
-              <div className="relative z-10 w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-[0_20px_50px_rgba(56,189,248,0.3)] border border-sky-200/50 bg-[#e0f2fe]">
-                
-                {/* The spinning Earth Map */}
+              {/* --- THE VIBRANT SKY BLUE GLOBE (Scaled Down) --- */}
+              <div className="relative z-10 w-48 h-48 sm:w-56 sm:h-56 lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden shadow-[0_15px_40px_rgba(56,189,248,0.3)] border border-sky-200/50 bg-[#e0f2fe]">
                 <div 
                   className="absolute inset-0 w-full h-full opacity-100 mix-blend-multiply"
                   style={{
@@ -165,36 +163,31 @@ export default function HeroSection() {
                     filter: "brightness(1.4) contrast(1.1) hue-rotate(-15deg)"
                   }}
                 />
-
-                {/* Sky Blue Color Overlay to make the oceans pop */}
                 <div className="absolute inset-0 bg-sky-300/30 mix-blend-color pointer-events-none" />
-
-                {/* Softer 3D Inner Shadow */}
-                <div className="absolute inset-0 rounded-full shadow-[inset_-20px_-20px_40px_rgba(11,59,122,0.4),inset_10px_10px_30px_rgba(255,255,255,0.7)] pointer-events-none" />
+                <div className="absolute inset-0 rounded-full shadow-[inset_-15px_-15px_30px_rgba(11,59,122,0.4),inset_10px_10px_20px_rgba(255,255,255,0.7)] pointer-events-none" />
               </div>
 
-              {/* --- 3. FLOATING COUNTRY FLAGS --- */}
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" as const }} className="absolute z-30 top-[8%] left-[2%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
-                <Image alt="Canada" className="object-cover" fill sizes="48px" src="/hero/ca.png"/>
+              {/* --- 3. FLOATING COUNTRY FLAGS (Scaled Down) --- */}
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute z-30 top-[8%] left-[0%] w-8 sm:w-10 aspect-[4/3] rounded shadow-md overflow-hidden border-2 border-white">
+                <Image alt="Canada" className="object-cover" fill sizes="40px" src="/hero/ca.png"/>
               </motion.div>
 
-              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: 1 }} className="absolute z-30 top-[20%] right-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
-                <Image alt="UK" className="object-cover" fill sizes="48px" src="/hero/gb.png"/>
+              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute z-30 top-[20%] right-[-5%] w-8 sm:w-10 aspect-[4/3] rounded shadow-md overflow-hidden border-2 border-white">
+                <Image alt="UK" className="object-cover" fill sizes="40px" src="/hero/gb.png"/>
               </motion.div>
 
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" as const, delay: 2 }} className="absolute z-30 bottom-[15%] left-[-5%] w-10 sm:w-12 aspect-[4/3] rounded shadow-xl overflow-hidden border-2 border-white">
-                <Image alt="USA" className="object-cover" fill sizes="48px" src="/hero/us.png"/>
+              <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="absolute z-30 bottom-[15%] left-[-5%] w-8 sm:w-10 aspect-[4/3] rounded shadow-md overflow-hidden border-2 border-white">
+                <Image alt="USA" className="object-cover" fill sizes="40px" src="/hero/us.png"/>
               </motion.div>
 
             </div>
 
-            {/* --- BOLD LETTERS (Foreground Layer) --- */}
-            <div className="relative z-40 flex flex-col items-center justify-center -mt-10 sm:-mt-16 pointer-events-none">
-              <div className="flex justify-center items-end gap-2 sm:gap-3">
+            {/* --- BOLD LETTERS (Scaled Down) --- */}
+            <div className="relative z-40 flex flex-col items-center justify-center -mt-6 sm:-mt-8 lg:-mt-10 pointer-events-none">
+              <div className="flex justify-center items-end gap-1.5 sm:gap-2 lg:gap-3">
                 
-                {/* B - USA */}
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.3 }}>
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
+                  <svg viewBox="0 0 100 140" className="w-12 sm:w-16 lg:w-[85px] h-auto drop-shadow-xl overflow-visible">
                     <defs>
                       <clipPath id="clipB"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">B</text></clipPath>
                       <linearGradient id="usaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -212,9 +205,8 @@ export default function HeroSection() {
                   </svg>
                 </motion.div>
 
-                {/* O - UK */}
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.4 }}>
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
+                  <svg viewBox="0 0 100 140" className="w-12 sm:w-16 lg:w-[85px] h-auto drop-shadow-xl overflow-visible">
                     <defs>
                       <clipPath id="clipO"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">O</text></clipPath>
                     </defs>
@@ -228,9 +220,8 @@ export default function HeroSection() {
                   </svg>
                 </motion.div>
 
-                {/* L - FRANCE */}
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5 }}>
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
+                  <svg viewBox="0 0 100 140" className="w-12 sm:w-16 lg:w-[85px] h-auto drop-shadow-xl overflow-visible">
                     <defs>
                       <clipPath id="clipL"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">L</text></clipPath>
                       <linearGradient id="franceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -248,9 +239,8 @@ export default function HeroSection() {
                   </svg>
                 </motion.div>
 
-                {/* D - Australia */}
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6 }}>
-                  <svg viewBox="0 0 100 140" className="w-16 sm:w-24 lg:w-[110px] h-auto drop-shadow-2xl overflow-visible">
+                  <svg viewBox="0 0 100 140" className="w-12 sm:w-16 lg:w-[85px] h-auto drop-shadow-xl overflow-visible">
                     <defs>
                       <clipPath id="clipD"><text x="50" y="115" fontSize="125" fontWeight="900" fontFamily="Inter, sans-serif" textAnchor="middle">D</text></clipPath>
                     </defs>
@@ -271,8 +261,8 @@ export default function HeroSection() {
                 </motion.div>
               </div>
               
-              <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.8 }} className="mt-3 sm:mt-4">
-                <div className="tracking-[0.45em] text-[#0B3B7A] font-black text-lg sm:text-xl bg-white/90 backdrop-blur-md border border-sky-100 rounded-full py-2.5 px-8 mx-auto inline-block shadow-lg uppercase">
+              <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.8 }} className="mt-2 sm:mt-3">
+                <div className="tracking-[0.4em] text-[#0B3B7A] font-black text-sm sm:text-base lg:text-lg bg-white/90 backdrop-blur-md border border-sky-100 rounded-full py-1.5 px-6 mx-auto inline-block shadow-md uppercase">
                   OVERSEAS
                 </div>
               </motion.div>
@@ -283,12 +273,12 @@ export default function HeroSection() {
       </div>
 
       {/* --- BOTTOM GRID STATS BLOCK --- */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 mt-16 sm:mt-24">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 mt-10 sm:mt-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
         >
           {stats.map((item, index) => (
             <motion.div
@@ -297,10 +287,10 @@ export default function HeroSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.9 + index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all text-center group"
+              className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-lg transition-all text-center group"
             >
-              <h3 className="text-3xl sm:text-4xl font-black text-[#0B3B7A] group-hover:text-sky-500 transition-colors">{item.number}</h3>
-              <p className="text-gray-500 font-semibold text-xs sm:text-sm mt-2">{item.label}</p>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B3B7A] group-hover:text-sky-500 transition-colors">{item.number}</h3>
+              <p className="text-gray-500 font-semibold text-[10px] sm:text-xs lg:text-sm mt-1 sm:mt-2">{item.label}</p>
             </motion.div>
           ))}
         </motion.div>
