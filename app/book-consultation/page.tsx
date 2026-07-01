@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useSearchParams } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import Link from "next/link"
-import { PhoneCall } from "lucide-react"
+import { PhoneCall, Mail, MessageCircle } from "lucide-react"
 
 const countries = [
   "United States", "United Kingdom", "Canada", "Australia", 
@@ -65,12 +64,13 @@ function BookConsultationContent() {
 
     setIsSubmitting(true);
     
-    // Tiny delay for natural feel, then open Calendly
     await new Promise(resolve => setTimeout(resolve, 800));
-    window.open("https://calendly.com/1998nvrk/30min", "_blank", "noopener,noreferrer");
+    
+    // UPDATED: New Calendly Link for the automatic popup
+    window.open("https://calendly.com/boldoverseas9/30min", "_blank", "noopener,noreferrer");
 
     setIsSubmitting(false);
-    setIsSubmitted(true); // Show Success Screen
+    setIsSubmitted(true);
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -95,7 +95,6 @@ function BookConsultationContent() {
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#1D4ED8]/5 rounded-full blur-[100px]" />
@@ -122,7 +121,6 @@ function BookConsultationContent() {
         </div>
       </section>
 
-      {/* Main Content */}
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -135,7 +133,6 @@ function BookConsultationContent() {
                   exit={{ opacity: 0, y: -20 }}
                   className="grid lg:grid-cols-5 gap-10"
                 >
-                  {/* Left Side - Benefits */}
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -156,9 +153,23 @@ function BookConsultationContent() {
                         </p>
                       </div>
                     </div>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-blue-50 p-6 rounded-3xl border border-blue-100/50 shadow-sm">
+                      <a href="https://wa.me/919966704042" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full font-semibold hover:bg-[#20bd5a] transition-colors">
+                        <MessageCircle className="w-5 h-5" />
+                        WhatsApp Us
+                      </a>
+                      <div className="flex flex-col text-sm">
+                        <a href="tel:+919966704042" className="inline-flex items-center gap-2 text-[#0B3B7A] font-bold hover:underline mb-1">
+                          <PhoneCall className="w-4 h-4" /> +91 99667 04042
+                        </a>
+                        <a href="mailto:Sairamgade@boldoverseas.com" className="inline-flex items-center gap-2 text-gray-600 hover:text-[#0B3B7A] hover:underline">
+                          <Mail className="w-4 h-4" /> Sairamgade@boldoverseas.com
+                        </a>
+                      </div>
+                    </div>
                   </motion.div>
 
-                  {/* Right Side - Form */}
                   <motion.div
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -202,7 +213,7 @@ function BookConsultationContent() {
                             <label className="block text-sm font-medium text-gray-700 mb-2">Destination *</label>
                             <select
                               name="preferredCountry" value={formData.preferredCountry} onChange={handleInputChange}
-                              className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredCountry ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none`}
+                              className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredCountry ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none bg-white`}
                             >
                               <option value="">Select a country</option>
                               {countries.map(country => <option key={country} value={country}>{country}</option>)}
@@ -216,7 +227,7 @@ function BookConsultationContent() {
                               <input
                                 type="date" name="preferredDate" value={formData.preferredDate} onChange={handleInputChange}
                                 min={getMinDate()} max={getMaxDate()}
-                                className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredDate ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none`}
+                                className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredDate ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none bg-white`}
                               />
                               {errors.preferredDate && <p className="mt-1 text-xs text-red-500">{errors.preferredDate}</p>}
                             </div>
@@ -224,7 +235,7 @@ function BookConsultationContent() {
                               <label className="block text-sm font-medium text-gray-700 mb-2">Time *</label>
                               <select
                                 name="preferredTime" value={formData.preferredTime} onChange={handleInputChange}
-                                className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredTime ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none`}
+                                className={`w-full px-4 py-3.5 rounded-xl border ${errors.preferredTime ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"} outline-none bg-white`}
                               >
                                 <option value="">Select a time</option>
                                 {timeSlots.map(time => <option key={time} value={time}>{time} IST</option>)}
@@ -244,19 +255,9 @@ function BookConsultationContent() {
                         </div>
                       </form>
                     </div>
-
-                    {/* Emergency Fallback added right under the form */}
-                    <div className="text-center bg-blue-50 p-6 rounded-3xl border border-blue-100/50 shadow-sm">
-                      <p className="text-gray-600 mb-2">Having trouble booking or need immediate help?</p>
-                      <a href="tel:+919717114433" className="inline-flex items-center gap-2 text-[#0B3B7A] font-bold hover:underline">
-                        <PhoneCall className="w-5 h-5" />
-                        Call us directly at +91 97171 14433
-                      </a>
-                    </div>
                   </motion.div>
                 </motion.div>
               ) : (
-                /* Success Screen */
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -283,17 +284,17 @@ function BookConsultationContent() {
                     </button>
                   </div>
 
-                  {/* Fallback repeated on success screen in case popup blocker caught Calendly */}
                   <div className="text-center bg-yellow-50 p-6 rounded-3xl border border-yellow-100 shadow-sm">
                     <p className="text-gray-700 font-medium mb-1">Did the calendar not open?</p>
                     <p className="text-gray-600 text-sm mb-3">Your browser might have blocked the pop-up.</p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <a href="https://calendly.com/1998nvrk/30min" target="_blank" rel="noopener noreferrer" className="text-[#1D4ED8] font-bold hover:underline">
+                      {/* UPDATED: New Calendly Link for the manual fallback */}
+                      <a href="https://calendly.com/boldoverseas9/30min" target="_blank" rel="noopener noreferrer" className="text-[#1D4ED8] font-bold hover:underline">
                         Click here to open it manually
                       </a>
                       <span className="hidden sm:inline text-gray-300">|</span>
-                      <a href="tel:+919717114433" className="inline-flex items-center gap-1 text-gray-600 hover:text-[#0B3B7A]">
-                        <PhoneCall className="w-4 h-4" /> Call +91 97171 14433
+                      <a href="tel:+919966704042" className="inline-flex items-center gap-1 text-gray-600 hover:text-[#0B3B7A]">
+                        <PhoneCall className="w-4 h-4" /> +91 99667 04042
                       </a>
                     </div>
                   </div>
